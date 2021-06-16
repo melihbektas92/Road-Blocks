@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
@@ -9,8 +10,18 @@ public class GameManager : MonoBehaviour
 
     public GameObject completeLevelUI;
 
+    public AudioSource levelComplete;
+
+    public Text levelText;
+
+    private void Start()
+    {
+        levelText.text = SceneManager.GetActiveScene().buildIndex.ToString();
+    }
+
     public void CompleteLevel()
     {
+        levelComplete.Play();
         completeLevelUI.SetActive(true);
     }
 
@@ -19,7 +30,6 @@ public class GameManager : MonoBehaviour
         if (!gameHasEnded)
         {
             gameHasEnded = true;
-            Debug.Log("Game Over");
             Invoke("Restart", retartDelay);
         }
     }
