@@ -19,6 +19,14 @@ public class GameManager : MonoBehaviour
         levelText.text = SceneManager.GetActiveScene().buildIndex.ToString();
     }
 
+    private void Update()
+    {
+        if (Input.GetKey("space"))
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        }
+    }
+
     public void CompleteLevel()
     {
         levelComplete.Play();
@@ -37,6 +45,6 @@ public class GameManager : MonoBehaviour
     void Restart ()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
-;    }
+    }
 }
 

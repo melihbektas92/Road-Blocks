@@ -14,6 +14,11 @@ public class Music : MonoBehaviour
             DontDestroyOnLoad(gameObject);
             return;
         }
+        else
+        {
+            instance = this;
+            GameObject.Destroy(gameObject);
+        }
     }
 
     void Start()
